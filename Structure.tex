@@ -1,0 +1,164 @@
+\documentclass[superscriptaddress, twocolumn, prl, longbibliography, nofootinbib]{revtex4-1}
+\usepackage{amsmath, amsbsy, amssymb, color, graphicx}
+\definecolor{linkcolor}{rgb}{0,0,0.6} 
+\usepackage[pdftex,colorlinks=true,
+	pdfstartview = FitV,
+	linkcolor    = linkcolor,
+	citecolor    = linkcolor,
+	urlcolor     = linkcolor,	
+	hyperindex   = true,
+	hyperfigures = false]{hyperref}
+
+\newcommand{\A}{\text{\tiny{A}}}
+
+
+% ===============================================================================
+
+
+\begin{document}
+
+\title{Quantifying dissipation from structure in active matter}
+
+\author{Laura Tociu}
+\author{Gregory Rassolov}
+\affiliation{James Franck Institute, University of Chicago, Chicago, IL 60637}
+\affiliation{Department of Chemistry, University of Chicago, Chicago, IL 60637}
+
+\author{\'Etienne Fodor}
+\affiliation{Department of Physics and Materials Science, University of Luxembourg, L-1511 Luxembourg, Luxembourg}
+
+\author{Suriyanarayanan Vaikuntanathan}
+\affiliation{James Franck Institute, University of Chicago, Chicago, IL 60637}
+\affiliation{Department of Chemistry, University of Chicago, Chicago, IL 60637}
+
+\begin{abstract}
+	Structure of active matter is probed.
+\end{abstract}
+
+\maketitle
+
+
+% ===============================================================================
+
+
+Active matter is a class of nonequilibrium systems where every component consumes energy to produce an autonomous motion~\cite{Marchetti2013, Bechinger2016, Marchetti2018}. Examples of active systems span many length- and time-scales, from bacterial swarms~\cite{Libchaber2000, Elgeti2015} and assemblies of self-propelled colloids~\cite{Bechinger2013, Palacci2013} to animal groups~\cite{Cavagna2010, Cavagna2014} and human crowds~\cite{Bottinelli2016, Bartolo2019}. The energy fluxes stemming from individual self-propulsion lead to complex collective behaviors without any equilibrium equivalent, such as a collective directed motion~\cite{Dauchot2010, Sood2014} and a phase separation with purely repulsive interactions~\cite{Bechinger2013, Palacci2013}. Then, predicting and controlling reliably the features of active systems is motivated in part by designing materials with innovative functions.
+
+
+Minimal models have been proposed to capture active dynamics, for instance with either aligning or isotropic particles, yielding respectively collective motion~\cite{Vicsek1995, Chate2020} and motility-induced phase separation (MIPS)~\cite{Fily2012, Cates2015}. Based on these models, the challenge is to establish a nonequilibrium thermodynamic framework, by analogy with equilibrium, which connects microscopic details and emergent physics. Progress has been made in this direction by characterizing protocol-based observables, such as pressure~\cite{Marchetti2014, Brady2014, Solon2015}, surface tension~\cite{Speck2015, Paliwal2017, Zakine2020}, and chemical potential~\cite{Paliwal2018, Guioth2019}. Importantly, the dissipation induced by microscopic energy fluxes has recently attracted much attention, since it measures the cost to drive the dynamics into nonequilibrium states~\cite{Shim2016, Suma2017, Junco2018, Spinney2018, Murrell2018, Murrell2019, Markovich2020} and to extract work with original protocols~\cite{Zakine2017, Martin2018, Pietzonka2019, Liao2020, Ekeh2020, Kroy2020}. In particular, it has been shown that dissipation constrains the transport of active particles~\cite{Suri2019, Suri2020}, and that changing dissipation with a dynamical bias yields some phase transitions~\cite{Nemoto2019, GrandPre2020}.
+
+
+At variance with protocol-based observables, evaluating dissipation requires microscopic information which can be difficult to access. Indirect measurements have then been proposed, which rely either on estimating the response to perturbation~\cite{Sasa2005, Toyabe2010, Ahmed2016, Nardini2017, Mizuno2018}, quantifying currents~\cite{Barato2015, Gingrich2016, Gladrow2016, Li2019}, or analyzing the irreversibility of trajectories~\cite{Roldan2018, Parrondo2019}. Interestingly, some of the authors have recently revealed an empirical relation between dissipation and structure which shortcuts the limitations of indirect measurements~\cite{Suri2019}. While this result potentially encompasses a broad scope of applications, since it allows for extracting energy current from measurements of density pair correlations only, any systematic derivation has remained elusive. Moreover, its applicability close to phase transitions is also  largely an open question.
+
+
+In this paper, we develop a nonequilibrium mean-field theory which accurately describes the dissipation and structure of an assembly of active particles. Inspired by previous works~\cite{Demery2011, Demery2014}, our approach relies on deriving the effective dynamics of an active tracer embedded in the system. At variance with other effective representations of active dynamics~\cite{Maggi2015, Rein2016, Wittmann2017}, we do not rely on any equilibrium approximation, thus allowing one to retain all nonequilibrium features, and in particular to properly evaluate the dissipation.
+
+
+%strongly driven systems approaching a non-equilibrium phase transition.
+
+%In this paper we work out [Outline] (1) A mean field theory for the structure of an active liquid (2) Show how the mean field theory works fairly well even for strongly driven systems. This is done using c(k) instead of -v(k). (3) Based in part on this mean field theory, show how $\dot{w}  \propto \cal{I}$ (Gaussian approximation is used additionally). (4) Verify connections in (3) for WCA particles.
+
+
+We consider a popular model of active matter made of interacting self-propelled particles, often referred to as Active Ornstein Uhlenbeck Particles (AOUPs)~\cite{Szamel2014, Maggi2015, Nardini2016}, with two-dimensional overdamped dynamics:
+\begin{equation}
+	\dot{\bf r}_i = -\mu\nabla_i \sum_{j\neq i} u({\bf r}_i-{\bf r}_j) + {\bf v}_i + {\boldsymbol\xi}_i ,
+\end{equation}
+where $\mu$ is the mobility, and $u$ is the pair-wise potential. The terms $\{{\boldsymbol\xi}_i,{\bf v}_i\}$ embody respectively the thermal noise and the self-propulsion velocity. They have Gaussian statistics with zero mean and uncorrelated variances, given by $\langle\xi_{i\alpha}(t)\xi_{j\beta}(0)\rangle = 2D \delta_{ij}\delta_{\alpha\beta}\delta(t)$ and $\langle v_{i\alpha}(t)v_{j\beta}(0)\rangle = (D_{\rm A}/\tau) \delta_{ij}\delta_{\alpha\beta}e^{-|t|/\tau}$, where $\{D,D_{\rm A}\}$ are respectively the passive and active diffusion coefficients, and $\tau$ is the persistence time. For a vanishing persistence ($\tau=0$), the system reduces to a set of passive Brownian particles at temperature $(D+D_{\rm A})/\mu$. At sufficiently high persistence, the system undergoes a phase separation even with purely repulsive interactions~\cite{Nardini2016, Maggi2020}.
+
+
+
+
+\section{Mean-field theory}
+
+Suri: cover the deterministic forces aspect and discuss why we exclude the FK from the field EOM.
+
+Helpful equations:
+\begin{equation}\label{eq:tracer_EOM}
+\dot{\bf r}_0 = {\bf f}_0 - \int \bar{\rho}({\bf r}, t) \nabla_0 U({\bf r} -{\bf r}_0) d{\bf r} + {\bm \xi}_i
+\end{equation}
+
+where $\bar{\rho}({\bf r}, t) = \sum_{i \neq 0} \delta({\bf r} - {\bf r}_i(t))$ is the reduced density field.
+
+\begin{equation}\label{eq:field_EOM}
+	\begin{aligned}
+		\delta \rho_{\bf k}(t) &= \int_{-\infty}^t e^{-|{\bf k}|^2 G({\bf k}) (t-s)} \left( -|{\bf k}|^2 \rho_0 U({\bf k}) e^{-i{\bf k} \cdot {\bf r}_0(s)} \right.
+		\\
+		&\left.\quad +i{\bf k} \cdot \sqrt{2\rho_0 T} \bm{\Lambda} ({\bf k}, s)\right),
+	\end{aligned}
+\end{equation}
+where $G({\bf k}) = \rho_0 U({\bf k}) + T$ and $\bm{\Lambda}$ is a multiplicative noise term obeying:
+
+\begin{equation}\label{eq:field_noise}
+\langle {\bm \Lambda}({\bf k}, s) \cdot {\bm \Lambda}({\bf k}', s')  \rangle = \delta(s-s')\delta({\bf k} + {\bf k}')
+\end{equation}
+
+By substituting Eq. \ref{eq:field_EOM} into the Fourier transform of Eq. \ref{eq:tracer_EOM}, we obtain a closed form for the evolution of the tracer.
+
+To be able to derive the pair correlation function and other quantities in the next sections, we further resort to tuning the tracer-bath interaction through a dimensionless parameter $h$ between 0 and 1. We accomplish this by scaling the inter-particle potential $U({\bf k}) \to h U({\bf k})$.  When $h=0$, there are no inter-particle interactions, and when $h=1$ there is full interaction.  
+
+Suri: explain whether there should be an $h$ in the $G({\bf k})$ in the exponent or not, namely if $G({\bf k}) \to \rho_0 h U({\bf k}) + T$ or not. 
+
+\section{Pair Correlation Function}
+
+We wish to derive a formula for $\rho^2_0 g({\bf r}) = \rho_0 \langle \bar{\rho}({\bf r}_0 + {\bf r}) \rangle $. The averaging in the formula for $g({\bf r})$ is understood to be done over a single time point. Expressing the pair correlation function in the equivalent form of a tracer-liquid correlation function allows us to use the mean-field treatment of the liquid dynamics derived in the previous section.
+
+In Fourier space, we can write:
+\begin{align*}
+\rho^2_0 g({\bf k}) & = \rho_0 \int d{\bf r} e^{i{\bf k} \cdot{\bf r}} \left \langle   \bar \rho( {\bf r}_0 + {\bf r} ) \right \rangle \\ 
+& = \rho_0 \int d{\bf r} e^{-i{\bf k} \cdot{\bf r}} \left \langle   \int d{\bf k}' e^{i{\bf k}' \cdot( {\bf r} +  {\bf r}_0) } \bar{\rho}({\bf k}') \right \rangle \\ 
+& =  \rho_0 \left \langle  e^{i{\bf k} \cdot {\bf r}_0 } \bar{\rho}({\bf k}) \right \rangle
+\end{align*}
+To at most second order in $h^2$, we get:
+\begin{widetext}
+\begin{align*}
+\rho^2_0 g({\bf k}) & =  \rho_0 \left \langle e^{i{\bf k} \cdot {\bf r}_0(0) }  \int_{-\infty}^0 ds e^{|{\bf k}|^2 G({\bf k})s}  \left[ -h \rho_0 |{\bf k}|^2 U({\bf k}) e^{-i{\bf k} \cdot {\bf r}_0(s)} + i{\bf k}\cdot  {\bm \Lambda}({\bf k}, s) \right] \right \rangle \\
+& = - h \rho_0 |{\bf k}|^2 \rho_0  U({\bf k}) \int
+_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s}  e^{-\frac{|{\bf k}|^2}{\gamma^2} R(-s)/2} - \\
+&  h \dfrac{\rho_0}{\gamma}  \int d{\bf k}'  |{\bf k}|^2 |{\bf k}'|^2 U({\bf k}') \int_{-\infty}^0 ds' e^{ |{\bf k}'|^2 G({\bf k}') s'}  \langle e^{i{\bf k}\cdot \int_{-\infty}^0 [1/\gamma {\bf f}_0(x) + {\bm \xi}_0(x) ]dx}  e^{i{\bf k}'\cdot \int_{-\infty}^{s'} [1/\gamma {\bf f}_0(x) + {\bm \xi}_0(x)] dx}    \rangle \\
+& \int_{s}^{0} ds  \int_{-\infty}^{s'} ds'' e^{ |{\bf k}'|^2 G({\bf k}) (s''+s)}  \langle {\bm \Lambda}({\bf k}, s) \cdot {\bm \Lambda}({\bf k}', s'')\rangle,
+\end{align*}
+\end{widetext}
+
+where 
+\begin{equation*}
+R(s) = 2T_\A s - 2 T_\A \tau (1 - e^{-s/\tau}) 
+\end{equation*}
+
+After performing the averages over the noise terms and the deterministic active forces, and setting $h=1$, we get that:
+\begin{widetext}
+\begin{align}
+\rho^2_0 g({\bf k}) = - \rho_0 ( |{\bf k}|^2 \rho_0 U({\bf k}))  \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})} \int
+_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s}  e^{-\frac{|{\bf k}|^2}{\gamma^2} R(-s)/2}
+\end{align}
+\end{widetext}
+
+\section{General Formulas for $\mathcal{I}$ For Arbitrary $\tau$}
+
+It follows that for intermediate $\tau$ values, we get the following expressions for $\mathcal{I}$ which cannot be further simplified:
+
+\begin{widetext}
+\begin{align}\label{eq:final_expression_I}
+\mathcal{I} & =  h^2 \rho_0 \int d{\bf k} |{\bf k}|^4 (U({\bf k}))^2 \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})} \int_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s}  e^{-\frac{|{\bf k}|^2}{\gamma^2} R(-s)/2}
+\\
+& \left[ T_\A/\gamma^2  (1-e^{s/\tau}) - \rho_0 U({\bf k}) \right] -
+\\
+&h^2 \rho_0 \int d{\bf k} |{\bf k}|^4 (U({\bf k}))^2 \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})}
+\int_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s} \rho_0 U({\bf k})
+\end{align}
+\end{widetext}
+
+
+% ===============================================================================
+
+
+\acknowledgements{
+This work was mainly supported by the DOE grant through funding to LT and SV. \'EF acknowledges support from an ATTRACT Investigator Grant of the Luxembourg National Research Fund.
+}
+
+
+% ===============================================================================
+
+
+\bibliography{References.bib}
+
+\end{document}
+

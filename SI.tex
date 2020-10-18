@@ -1,0 +1,118 @@
+\documentclass[amsmath,preprintnumbers,10pt,article,notitlepage]{revtex4-1}
+\usepackage{amsmath}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{subfigure}
+\usepackage{physics}
+\usepackage{soul}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{lipsum}
+\usepackage[normalem]{ulem}
+%\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Ai}{\text{Ai}}
+\newcommand{\Bi}{\text{Bi}}
+\newcommand{\Real}{\text{Re}}
+\newcommand{\Imag}{\text{Im}}
+\usepackage{verbatim}
+\usepackage{natbib}
+
+\newcommand{\ee}{\text{e}}
+\newcommand{\A}{\text{\tiny{A}}}
+
+\DeclareMathOperator\erf{erf}
+\newcommand\mymathop[1]{\mathop{\operatorname{#1}}}
+
+\def\smath#1{\text{\scalebox{0.9}{$#1$}}}
+\def\sfrac#1#2{\smath{\frac{#1}{#2}}}
+
+
+\bibliographystyle{apsrev4-1}
+\begin{document} 
+\title{Structure and dissipation in active matter - Supplementary Information}
+\author{Gregory Rassolov$^{1,2}$*, Laura Tociu$^{1,2}$*, \`Etienne Fodor$^{3}$, Suriyanarayanan Vaikuntanathan$^{1,2}$}
+\affiliation{$^1$The James Franck Institute, The University of Chicago, Chicago, IL,}
+\affiliation{$^2$ Department of Chemistry, The University of Chicago, Chicago, IL,}
+\affiliation{$^3$ DAMTP, Centre for Mathematical Sciences, University of Cambridge, Wilberforce Road, Cambridge CB3 0WA, UK}
+
+\maketitle
+
+\section{g in Fourier Space}
+
+\begin{align*}
+\rho_0 g({\bf k}) & = \int d{\bf r} e^{i{\bf k} \cdot{\bf r}} \left \langle   \bar \rho( {\bf r}_0 + {\bf r} ) \right \rangle \\ 
+& =  \int d{\bf r} e^{-i{\bf k} \cdot{\bf r}} \left \langle   \int d{\bf k}' e^{i{\bf k}' \cdot( {\bf r} +  {\bf r}_0) } \bar{\rho}({\bf k}') \right \rangle \\ 
+& =  \left \langle  e^{i{\bf k} \cdot {\bf r}_0 } \bar{\rho}({\bf k}) \right \rangle
+\end{align*}
+
+\section{Limit of Small Persistence Time $\tau$}
+
+The formulas for rate of work and $\mathcal{I}$ in this limit are not correct. This is expected since we are working strictly in the $\tau > 0$ regime to be able to have deterministic forces etc...
+
+\section{Limit of Large Persistence Time $\tau$}\label{sec:large_tau}
+
+We want to look at the limit in which $\tau \to \infty$, but also $T_\A \to \infty$  such that $\frac{T_A}{\tau} = Pe^2 > 0$. In this limit, we have that:
+
+
+\begin{equation}\label{eq:final_expression_work_large_tau}
+\dot{w}  = -h^2 \rho_0 \dfrac{T_\A}{\tau \gamma^2} \int d{\bf k} |{\bf k}|^4 (U({\bf k}))^2 \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})} 
+\int_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s} e^{-\frac{|{\bf k}|^2}{\gamma^2}\frac{T_\A}{2\tau}{s}^2} s 
+\end{equation}
+
+and
+\begin{align}\label{eq:final_expression_I_large_tau}
+\mathcal{I} & =  - h^2 \rho_0 \int d{\bf k} |{\bf k}|^4 (U({\bf k}))^2 \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})}
+\int_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)} e^{-\frac{|{\bf k}|^2}{\gamma^2}\frac{T_\A}{2\tau}{s}^2} \nonumber\\
+& \left[ \dfrac{T_\A}{\tau \gamma^2}s  + \rho_0 U({\bf k}) \right] - \nonumber \\
+&h^2 \rho_0 \int d{\bf k} |{\bf k}|^4 (U({\bf k}))^2 \dfrac{ G({\bf k}) + T/ \gamma}{G({\bf k})}
+\int_{-\infty}^0 ds e^{|{\bf k}|^2 ( G({\bf k}) + T/ \gamma)s} \rho_0 U({\bf k})
+\end{align}
+
+
+In order to evaluate the following integrals in Mathematica, I am including here the calculation of the relevant exponential in the equations above in terms of error functions.  Namely, calling $A =   |{\bf k}|^2 ( G({\bf k}) + T/ \gamma)$ and $B = \frac{|{\bf k}|^2}{2\gamma^2}$, we need to evaluate: 
+
+\begin{align}\label{first_integral}
+    2B\sfrac{T_\A}{\tau} \int_{-\infty}^0  e^{As-B\sfrac{T_\A}{\tau}s^2} s ds & = 
+     2B\sfrac{T_\A}{\tau} \frac{d}{dA}\int_{-\infty}^0  e^{As-B\sfrac{T_\A}{\tau}s^2} ds \nonumber \\
+     & =  2B\sfrac{T_\A}{\tau} \frac{d}{dA} \left[ e^{\sfrac{A^2}{4B}\sfrac{\tau}{T_\A}}\int_{-\infty}^0  e^{-\left(\sqrt{B\sfrac{T_\A}{\tau}}s-\sfrac{A}{2\sqrt{B}}\sqrt{\sfrac{\tau}{T_\A}}\right)^2} ds \right] \nonumber \\
+    &  = 2B\sfrac{T_\A}{\tau} \frac{d}{dA} \left[ e^{\sfrac{A^2}{4B}\sfrac{\tau}{T_\A}} \dfrac{\sqrt{\pi}}{2} \left(\frac{1 - \erf(\sfrac{A}{2\sqrt{B}}\sqrt{\sfrac{\tau}{T_\A}})}{\sqrt{B\sfrac{T_\A}{\tau}}} \right) \right] \nonumber \\
+    & =  - 1 + \dfrac{\sqrt{\pi}}{2} e^{\frac{A^2}{4B}\frac{\tau}{T_\A}} A\left(\frac{1 - \erf(\sfrac{A}{2\sqrt{B}}\sqrt{\sfrac{\tau}{T_\A}})}{\sqrt{B\sfrac{T_\A}{\tau}}} \right)
+\end{align}
+
+
+\subsection{Limit of Large Persistence Time $\tau$ And Small $Pe$}
+
+
+When $Pe^2 = T_\A/\tau$ is very small, the formulas become:
+
+
+\begin{equation}\label{eq:final_expression_work_large_tau_small_Pe}
+\dot{w}  = h^2 \rho_0 \dfrac{T_\A}{\tau \gamma^2} \int d{\bf k} (U({\bf k}))^2 \dfrac{1}{G({\bf k}) (G({\bf k}) + T/ \gamma)} 
+\end{equation}
+
+and
+\begin{equation}\label{eq:final_expression_I_large_tau_small_Pe}
+ \mathcal{I}  =  h^2 \rho_0 \frac{T_\A}{\tau \gamma^2 }   \int d{\bf k}  (U({\bf k}))^2 \dfrac{ 2T/\gamma}{G({\bf k}) (G({\bf k}) + T/ \gamma)^2} 
+ \end{equation}
+
+\subsection{Limit of Large Persistence Time $\tau$ And Large $Pe$}
+
+
+When $Pe^2 = T_\A/\tau$ is very large, the formulas become:
+
+
+\begin{equation}\label{eq:final_expression_work_large_tau_large_Pe}
+\dot{w}  = h^2 \rho_0 \int d{\bf k}  |{\bf k}|^2 (U({\bf k}))^2  \dfrac{G({\bf k})+T/\gamma}{G({\bf k})}
+\end{equation}
+
+and
+\begin{equation}\label{eq:final_expression_I_large_tau_large_Pe}
+  \mathcal{I} = h^2 \rho_0 \int d{\bf k}  |{\bf k}|^2 (U({\bf k}))^2  \dfrac{2T/\gamma}{G({\bf k})}
+\end{equation}
+
+
+\end{document}
